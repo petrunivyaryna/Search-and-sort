@@ -6,8 +6,8 @@ def linear_search(list_of_values, value):
     function return index of value in certain list
     >>> linear_search([1, 2, 3, 5], 4)
     -1
-    >>> linear_search([num, 8, 0 , 9, 9], 9)
-    3
+    >>> linear_search([8, 0 , 9, 9], 9)
+    2
     """
     for i, el in enumerate(list_of_values):
         if el == value:
@@ -72,15 +72,17 @@ def binary_search(list_of_values, value):
     """
     low = list_of_values[0]
     last = list_of_values[-1]
-    while low <= last:
-        middle = ((low + last)// 2)
-        if value == middle:
-            return list_of_values.index(middle)
-        elif value > middle:
-            low = middle +1
-        elif value < middle:
-            last = middle - 1
+    if value not in list_of_values:
         return -1
+    else:
+        while low <= last:
+            middle = ((low + last)// 2)
+            if value == middle:
+                return list_of_values.index(middle)
+            elif value > middle:
+                low = middle +1
+            elif value < middle:
+                last = middle - 1
 
 def selection_sort(lst):
     """
@@ -115,4 +117,6 @@ def quick_sort(lst):
     smaller_numbers = [elem for i, elem in enumerate(lst) if elem <= pivot and i != rand_idx]
     biggest_numbers = [elem for i, elem in enumerate(lst) if elem > pivot]
     return quick_sort(smaller_numbers) + [pivot] + quick_sort(biggest_numbers)
-    
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(verbose = True)
