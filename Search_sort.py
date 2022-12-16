@@ -43,7 +43,6 @@ def merge_sort(arr: list) -> List[int]:
                     j += 1
                 else:
                     new_arr += left[i:]
-
             else:
                 new_arr.append(left[i])
                 if left[i] != left[-1]:
