@@ -4,7 +4,7 @@ def linear_search(list_of_values, value):
     function return index of value in certain list
     >>> linear_search([1, 2, 3, 5], 4)
     -1
-    >>> linear_search([num, 8 ,0 , 9, 9], 9)
+    >>> linear_search([num, 8, 0 , 9, 9], 9)
     3
     """
     for i, el in enumerate(list_of_values):
