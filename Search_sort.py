@@ -1,3 +1,4 @@
+import random
 def linear_search(list_of_values, value):
     """
     """
@@ -92,5 +93,18 @@ def selection_sort(lst):
 
 def quick_sort(lst):
     """
+    A function that sorts values in list using
+    the quick sort algorithm.
+    >>> quick_sort([1, 6, 2, 9, 3, 0, 4, 8, 3, 7, 3])
+    [0, 1, 2, 3, 3, 3, 4, 6, 7, 8, 9]
+    >>> quick_sort([1, 2, 56, 11, 2, 8, 38, 4, 8, 101])
+    [1, 2, 2, 4, 8, 8, 11, 38, 56, 101]
     """
-    pass
+    if len(lst) <= 1:
+        return lst
+    rand_idx = random.randrange(len(lst))
+    pivot = lst[rand_idx]
+    smaller_numbers = [elem for i, elem in enumerate(lst) if elem <= pivot and i != rand_idx]
+    biggest_numbers = [elem for i, elem in enumerate(lst) if elem > pivot]
+    return quick_sort(smaller_numbers) + [pivot] + quick_sort(biggest_numbers)
+    
