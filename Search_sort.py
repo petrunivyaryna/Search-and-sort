@@ -10,8 +10,8 @@ def linear_search(list_of_values, value):
     >>> linear_search([8, 0 , 9, 9], 9)
     2
     """
-    for i, el in enumerate(list_of_values):
-        if el == value:
+    for i, elem in enumerate(list_of_values):
+        if elem == value:
             return i
     if value not in list_of_values:
         return -1
@@ -104,7 +104,6 @@ def selection_sort(lst):
                 min_element = j
         swap(lst, elem, min_element)
     return lst
-    
 def quick_sort(lst):
     """
     A function that sorts values in list using
