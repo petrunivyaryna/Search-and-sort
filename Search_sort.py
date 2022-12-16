@@ -15,8 +15,6 @@ def linear_search(list_of_values, value):
     if value not in list_of_values:
         return -1
      
-
-
 def merge_sort(arr: list) -> List[int]:
     '''
     Function to prform merge sort algorythm
