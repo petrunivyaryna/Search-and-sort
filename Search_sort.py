@@ -51,8 +51,11 @@ def merge_sort(arr: list) -> List[int]:
                     new_arr += right[j:]
         return new_arr
 
+    if len(arr) == 0:
+        return arr
     if len(arr) == 1:
         return arr
+
     mid = len(arr)//2
     left = merge_sort(arr[:mid])
     right = merge_sort(arr[mid:])
