@@ -1,3 +1,5 @@
+import random
+from typing import List
 def linear_search(list_of_values, value):
     """
     lst, int -> int
@@ -14,10 +16,51 @@ def linear_search(list_of_values, value):
         return -1
      
 
-def merge_sort(lst):
-    """
-    """
-    pass
+
+def merge_sort(arr: list) -> List[int]:
+    '''
+    Function to prform merge sort algorythm
+    :param list arr: unsorted list
+    :returns: sorted list
+    :rtype: list
+    >>> merge_sort([12, 11, 13, 5, 6, 7])
+    [5, 6, 7, 11, 12, 13]
+    '''
+    def merge(left: list, right: list) -> list:
+        '''
+        Function to merge two lists into a sorted one
+        :param list left: one of list to be merged
+        :param list right: another list to be merged
+        :returns: merged and sorted list
+        :rtype: list
+        >>> merge([1,5],[3,7])
+        [1, 3, 5, 7]
+        '''
+        new_arr = []
+        i = j = 0
+        while len(new_arr) < len(left) + len(right):
+            if left[i] > right[j]:
+                new_arr.append(right[j])
+                if right[j] != right[-1]:
+                    j += 1
+                else:
+                    new_arr += left[i:]
+
+            else:
+                new_arr.append(left[i])
+                if left[i] != left[-1]:
+                    i += 1
+                else:
+                    new_arr += right[j:]
+        return new_arr
+
+    if len(arr) == 1:
+        return arr
+    mid = len(arr)//2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    res = merge(left, right)
+    return res
 
 def binary_search(list_of_values, value):
     """
@@ -62,5 +105,18 @@ def selection_sort(lst):
 
 def quick_sort(lst):
     """
+    A function that sorts values in list using
+    the quick sort algorithm.
+    >>> quick_sort([1, 6, 2, 9, 3, 0, 4, 8, 3, 7, 3])
+    [0, 1, 2, 3, 3, 3, 4, 6, 7, 8, 9]
+    >>> quick_sort([1, 2, 56, 11, 2, 8, 38, 4, 8, 101])
+    [1, 2, 2, 4, 8, 8, 11, 38, 56, 101]
     """
-    pass
+    if len(lst) <= 1:
+        return lst
+    rand_idx = random.randrange(len(lst))
+    pivot = lst[rand_idx]
+    smaller_numbers = [elem for i, elem in enumerate(lst) if elem <= pivot and i != rand_idx]
+    biggest_numbers = [elem for i, elem in enumerate(lst) if elem > pivot]
+    return quick_sort(smaller_numbers) + [pivot] + quick_sort(biggest_numbers)
+    
