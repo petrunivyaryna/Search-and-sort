@@ -10,8 +10,27 @@ def merge_sort(lst):
 
 def binary_search(list_of_values, value):
     """
+    lst, int --> int
+    function return index of value in certain list
+    >>> binary_search([2, 3, 4, 6, 7 ,9, 10], 8)
+    -1
+    >>> binary_search([2, 3, 4, 6, 7 ,9, 10], 6)
+    3
+    >>> binary_search([2, 3, 4, 6, 7 ,9, 12], 2)
+    0
     """
-    pass
+    low = list_of_values[0]
+    last = list_of_values[-1]
+    while low <= last:
+        middle = ((low + last)// 2)
+        if value == middle:
+            return list_of_values.index(middle)
+        elif value > middle:
+            low = middle +1
+        elif value < middle:
+            last = middle - 1
+        return -1
+
 
 def selection_sort(lst):
     """
