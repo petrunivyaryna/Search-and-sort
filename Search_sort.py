@@ -3,10 +3,51 @@ def linear_search(list_of_values, value):
     """
     pass
 
-def merge_sort(lst):
-    """
-    """
-    pass
+
+def merge_sort(arr: list) -> List[int]:
+    '''
+    Function to prform merge sort algorythm
+    :param list arr: unsorted list
+    :returns: sorted list
+    :rtype: list
+    >>> merge_sort([12, 11, 13, 5, 6, 7])
+    [5, 6, 7, 11, 12, 13]
+    '''
+    def merge(left: list, right: list) -> list:
+        '''
+        Function to merge two lists into a sorted one
+        :param list left: one of list to be merged
+        :param list right: another list to be merged
+        :returns: merged and sorted list
+        :rtype: list
+        >>> merge([1,5],[3,7])
+        [1, 3, 5, 7]
+        '''
+        new_arr = []
+        i = j = 0
+        while len(new_arr) < len(left) + len(right):
+            if left[i] > right[j]:
+                new_arr.append(right[j])
+                if right[j] != right[-1]:
+                    j += 1
+                else:
+                    new_arr += left[i:]
+
+            else:
+                new_arr.append(left[i])
+                if left[i] != left[-1]:
+                    i += 1
+                else:
+                    new_arr += right[j:]
+        return new_arr
+
+    if len(arr) == 1:
+        return arr
+    mid = len(arr)//2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    res = merge(left, right)
+    return res
 
 def binary_search(list_of_values, value):
     """
