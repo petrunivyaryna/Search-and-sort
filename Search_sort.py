@@ -1,3 +1,4 @@
+"""Create a module using different methods of sorting and searching"""
 import random
 from typing import List
 def linear_search(list_of_values, value):
@@ -14,7 +15,6 @@ def linear_search(list_of_values, value):
             return i
     if value not in list_of_values:
         return -1
-        
 def merge_sort(arr: list) -> List[int]:
     '''
     Function to prform merge sort algorythm
@@ -61,7 +61,6 @@ def merge_sort(arr: list) -> List[int]:
     right = merge_sort(arr[mid:])
     res = merge(left, right)
     return res
-
 def binary_search(list_of_values, value):
     """
     lst, int --> int
@@ -86,9 +85,10 @@ def binary_search(list_of_values, value):
                 low = middle +1
             elif value < middle:
                 last = middle - 1
-
 def selection_sort(lst):
     """
+    A function that sorts values in list using
+    the selection sort algorithm.
     >>> selection_sort([19, 17, 3, 5, 2, 6, 10, 1])
     [1, 2, 3, 5, 6, 10, 17, 19]
     >>> selection_sort([10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5])
