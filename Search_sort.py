@@ -1,4 +1,5 @@
 import random
+from typing import List
 def linear_search(list_of_values, value):
     """
     """
