@@ -82,11 +82,10 @@ def binary_search(list_of_values, value):
             last = middle - 1
         return -1
 
-
 def selection_sort(lst):
     """
     A function for sorting a list of values by selection method.
-    >>> selection_sort([1,4,2,5,3,6,4,7,5,8,6])
+    >>> selection_sort([1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6])
     [1, 2, 3, 4, 4, 5, 5, 6, 6, 7, 8]
     """
     def swap(list_1, elem1, elem2):
