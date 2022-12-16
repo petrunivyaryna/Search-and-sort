@@ -1,7 +1,18 @@
 def linear_search(list_of_values, value):
     """
+    lst, int -> int
+    function return index of value in certain list
+    >>> linear_search([1, 2, 3, 5], 4)
+    -1
+    >>> linear_search([num, 8 ,0 , 9, 9], 9)
+    3
     """
-    pass
+    for i, el in enumerate(list_of_values):
+        if el == value:
+            return i
+    if value not in list_of_values:
+        return -1
+     
 
 def merge_sort(lst):
     """
