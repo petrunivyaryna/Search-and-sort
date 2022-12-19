@@ -13,8 +13,9 @@ def linear_search(list_of_values, value):
     for i, elem in enumerate(list_of_values):
         if elem == value:
             return i
-    if value not in list_of_values:
-        return -1
+    return -1
+
+
 def merge_sort(arr: list) -> List[int]:
     '''
     Function to prform merge sort algorythm
@@ -51,9 +52,7 @@ def merge_sort(arr: list) -> List[int]:
                     new_arr += right[j:]
         return new_arr
 
-    if len(arr) == 0:
-        return arr
-    if len(arr) == 1:
+    if len(arr) == 0 or len(arr) == 1:
         return arr
 
     mid = len(arr)//2
@@ -61,6 +60,8 @@ def merge_sort(arr: list) -> List[int]:
     right = merge_sort(arr[mid:])
     res = merge(left, right)
     return res
+
+
 def binary_search(list_of_values, value):
     """
     lst, int --> int
@@ -72,19 +73,20 @@ def binary_search(list_of_values, value):
     >>> binary_search([2, 3, 4, 6, 7 ,9, 12], 2)
     0
     """
-    low = list_of_values[0]
-    last = list_of_values[-1]
-    if value not in list_of_values:
-        return -1
-    else:
-        while low <= last:
-            middle = ((low + last)// 2)
-            if value == middle:
-                return list_of_values.index(middle)
-            elif value > middle:
-                low = middle +1
-            elif value < middle:
-                last = middle - 1
+    low = 0
+    last = len(list_of_values) - 1
+    middle = 0
+    while last >= low:
+        middle = (low + last) // 2
+        if list_of_values[middle] == value:
+            return middle
+        elif list_of_values[middle] < value:
+            low = middle + 1
+        else:
+            last = middle-1
+    return -1
+
+
 def selection_sort(lst):
     """
     A function that sorts values in list using
@@ -95,15 +97,21 @@ def selection_sort(lst):
     [1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 7, 8, 9, 10]
     """
     def swap(list_1, elem1, elem2):
-        list_1[elem1], list_1[elem2] = list_1[elem2], list_1[elem1]
+        first = list_1.pop(elem1)
+        second = list_1.pop(elem2 - 1)
+        list_1.insert(elem1, second)
+        list_1.insert(elem2, first)
         return list_1
     for elem in range(len(lst)):
         min_element = elem
         for j in range(elem + 1, len(lst)):
             if lst[min_element] > lst[j]:
                 min_element = j
-        swap(lst, elem, min_element)
+        if min_element != elem:
+            swap(lst, elem, min_element)
     return lst
+
+
 def quick_sort(lst):
     """
     A function that sorts values in list using
@@ -120,6 +128,7 @@ def quick_sort(lst):
     smaller_numbers = [elem for i, elem in enumerate(lst) if elem <= pivot and i != rand_idx]
     biggest_numbers = [elem for i, elem in enumerate(lst) if elem > pivot]
     return quick_sort(smaller_numbers) + [pivot] + quick_sort(biggest_numbers)
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod(verbose = True)
